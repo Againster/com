@@ -1,0 +1,15 @@
+【概述】
+改造了nginx-1.9.9的内存池
+
+【使用方法】
+一
+1.包含头文件#include "lz_palloc.h"
+2.声明结构体，实现lz_log_junction.h中的函数原型lz_log_handler_t中的的函数指针，并赋值给函数结构体指针lz_log_t.h。
+3.调用lz_create_pool()函数，分配内存池。
+4.调用lz_palloc()函数，从内存池中分配内存。
+5.调用lz_reset_pool()函数重置内存池。
+6.调用lz_destory_pool()函数释放内存池。
+
+二
+1.包含头文件#include"lz_allocator.h"
+2.如同std::allocator一样来使用lz_allocator类。
