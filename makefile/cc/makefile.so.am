@@ -1,0 +1,31 @@
+includedir = @includedir@/proto
+lib_LTLIBRARIES = libzproxyproto.la
+# example 1: zproxy
+libzproxyproto_la_SOURCES = zproxy/cgi_agent_msg.pb.cc zproxy/client_echo.pb.cc zproxy/file_group.pb.cc zproxy/module_register.pb.cc zproxy/proxy_auth.pb.cc zproxy/speed_detect.pb.cc zproxy/client_auth.pb.cc zproxy/client_hello.pb.cc zproxy/key_exchange.pb.cc zproxy/online_notify.pb.cc zproxy/proxy_status.pb.cc
+nobase_include_HEADERS = zproxy/cgi_agent_msg.pb.h zproxy/client_echo.pb.h zproxy/file_group.pb.h zproxy/module_register.pb.h zproxy/proxy_auth.pb.h zproxy/speed_detect.pb.h zproxy/client_auth.pb.h zproxy/client_hello.pb.h zproxy/key_exchange.pb.h zproxy/online_notify.pb.h zproxy/proxy_status.pb.h
+
+## zproxy-auth_dev
+libzproxyproto_la_SOURCES += auth_dev/auth_dev_ex.pb.cc
+nobase_include_HEADERS += auth_dev/auth_dev_ex.pb.h
+
+## zproxy-cgi_agent
+libzproxyproto_la_SOURCES += cgi_agent/cgi_agent.pb.cc
+nobase_include_HEADERS += cgi_agent/cgi_agent.pb.h
+
+## zproxy-bbcssoproxy
+libzproxyproto_la_SOURCES += bbcssopxy/bbcssopxy.pb.cc
+nobase_include_HEADERS += bbcssopxy/bbcssopxy.pb.h
+
+
+# example 2: db_service
+lib_LTLIBRARIES += libdb_service_proto.la
+libdb_service_proto_la_SOURCES = db_service/common.pb.cc db_service/device_auth.pb.cc db_service/device.pb.cc db_service/data_report.pb.cc db_service/common_util.pb.cc
+nobase_include_HEADERS += db_service/common.pb.h db_service/device_auth.pb.h db_service/device.pb.h db_service/data_report.pb.h db_service/common_util.pb.h
+
+
+# example 3: zproxy
+lib_LTLIBRARIES = libzproxy.la
+libzproxy_la_SOURCES = zproxy_addr.cpp zproxy_cmd.cpp zproxy_config.cpp zproxy_module.cpp zproxy_notify.cpp zproxy_ring.cpp zproxy_auth.cpp zproxy_cond.cpp zproxy_keyxhg.cpp zproxy_msg.cpp zproxy_rcu.cpp zproxy_tunnel.cpp
+ include_HEADERS = zproxy_addr.h zproxy_cmd.h zproxy_config.h zproxy_log.h zproxy_msg.h zproxy_proto.h zproxy_rcu.h zproxy_tunnel.h zproxy_auth.h zproxy_cond.h zproxy_keyxhg.h zproxy_module.h zproxy_notify.h zproxy_public.h zproxy_ring.h zproxy_utils.h
+sysconf_DATA=proxy.so.ini
+AM_CPPFLAGS= @AM_CPPFLAGS@ -I$(srcdir)/..
